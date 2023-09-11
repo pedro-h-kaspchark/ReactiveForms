@@ -1,0 +1,22 @@
+<h1 class="h1">Reactive Forms</h1>
+
+<div class="form">
+    <form [formGroup]="reactiveForm">
+        <label class="nome" for="nome">Nome:</label><br>
+        <input type="text" placeholder="Insira seu nome" name="nome" formControlName="nome" required class="name-input">
+        <br>
+        <div class="error-message" *ngIf="reactiveForm.get('nome')?.hasError('required') && reactiveForm.get('nome')?.touched">
+            O nome é obrigatório!
+        </div>
+        <label class="email" for="email">Email:</label><br>
+        <input type="email" placeholder="Insira seu email" name="email" formControlName="email" required class="email-input">
+        <br>
+        <div class="error-message" *ngIf="reactiveForm.get('email')?.hasError('required') && reactiveForm.get('email')?.touched">
+            O email é obrigatório!
+        </div>
+        <div class="error-message" *ngIf="reactiveForm.get('email')?.hasError('email') && reactiveForm.get('email')?.touched">
+            Email inválido!
+        </div>
+        <button class="enviar" (click)="enviar()">Enviar</button>
+    </form>
+</div>
